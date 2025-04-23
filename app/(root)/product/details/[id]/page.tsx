@@ -6,7 +6,13 @@ import Image from "next/image";
 import AddToCart from "./addToCart";
 import ProductCard from "@/components/ui/productCard";
 
-const ProductDetails = async ({ params }: { params: { id: string } }) => {
+interface PostPageProps {
+    params: {
+        id: string; // Assuming 'id' is always a string in your case
+    };
+}
+
+const ProductDetails = async ({ params }: PostPageProps) => {
     const { id: ID } = params;
     const SingleProduct: Product = await getSingleProduct(ID);
     const relatedProducts: Product[] = await getSingleCategory(
